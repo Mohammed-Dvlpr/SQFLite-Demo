@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sqfl_demo_porject/screens/note_datail.dart';
 
 class NoteList extends StatefulWidget {
   const NoteList({super.key});
@@ -48,6 +49,10 @@ class _NoteListState extends State<NoteList> {
               trailing: Icon(Icons.delete),
               onTap: () {
                 debugPrint('ListTab');
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => NoteDatail()));
               },
             ),
           );
