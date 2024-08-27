@@ -17,6 +17,13 @@ class _NoteListState extends State<NoteList> {
         backgroundColor: Theme.of(context).primaryColor,
       ),
       body: getListView(context),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          debugPrint('FAB clicked');
+        },
+        tooltip: 'Add Item',
+        child: Icon(Icons.add),
+      ),
     );
   }
 
