@@ -21,6 +21,7 @@ class _NoteListState extends State<NoteList> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           debugPrint('FAB clicked');
+          navigatorToNoteDetail();
         },
         tooltip: 'Add Item',
         child: Icon(Icons.add),
@@ -49,13 +50,14 @@ class _NoteListState extends State<NoteList> {
               trailing: Icon(Icons.delete),
               onTap: () {
                 debugPrint('ListTab');
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (BuildContext context) => NoteDatail()));
+                navigatorToNoteDetail();
               },
             ),
           );
         });
+  }
+
+  void navigatorToNoteDetail() {
+    Navigator.push(context, MaterialPageRoute(builder: (_) => NoteDatail()));
   }
 }
