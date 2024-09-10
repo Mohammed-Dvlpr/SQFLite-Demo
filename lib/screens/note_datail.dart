@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 
 class NoteDatail extends StatefulWidget {
-  const NoteDatail({super.key});
+  final String? appBarTitle;
+  const NoteDatail({super.key, this.appBarTitle});
 
   @override
-  State<NoteDatail> createState() => _NoteDatailState();
+  State<NoteDatail> createState() => _NoteDatailState(this.appBarTitle);
 }
 
 class _NoteDatailState extends State<NoteDatail> {
+  String? appBarTitle;
+  _NoteDatailState(this.appBarTitle);
+
   static var _priorrities = ['High', 'Low'];
   TextEditingController titleControler = TextEditingController();
   TextEditingController descriptionControler = TextEditingController();
@@ -17,7 +21,7 @@ class _NoteDatailState extends State<NoteDatail> {
     TextStyle? textStyle = Theme.of(context).textTheme.titleLarge;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Edit Note'),
+        title: Text(appBarTitle!),
         backgroundColor: Theme.of(context).primaryColor,
       ),
       body: Padding(

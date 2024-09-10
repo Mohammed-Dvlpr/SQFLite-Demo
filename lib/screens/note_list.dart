@@ -13,27 +13,25 @@ class _NoteListState extends State<NoteList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Notes'),
-        backgroundColor: Theme.of(context).primaryColor,
-      ),
-      body: getListView(context),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          debugPrint('FAB clicked');
-          navigatorToNoteDetail();
-        },
-        tooltip: 'Add Item',
-        child: Icon(Icons.add),
-      ),
-    );
+        appBar: AppBar(
+          title: const Text('Notes'),
+          backgroundColor: Theme.of(context).primaryColor,
+        ),
+        body: getListView(),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            debugPrint('Flotting button Press');
+          },
+          tooltip: 'Add Note',
+          child: const Icon(Icons.add),
+        ));
   }
 
-  ListView getListView(BuildContext context) {
+  ListView getListView() {
     TextStyle? textStyle = Theme.of(context).textTheme.bodyLarge;
     return ListView.builder(
         itemCount: count,
-        itemBuilder: (BuildContext context, int position) {
+        itemBuilder: (BuildContext context, int index) {
           return Card(
             color: Colors.white,
             elevation: 2.0,
@@ -42,22 +40,17 @@ class _NoteListState extends State<NoteList> {
                 backgroundColor: Colors.yellow,
                 child: Icon(Icons.add),
               ),
-              title: Text(
-                'Dummy Title',
-                style: textStyle,
-              ),
+              title: Text('Dummy Title', style: textStyle),
               subtitle: Text('Dummy Date'),
-              trailing: Icon(Icons.delete),
+              trailing: Icon(
+                Icons.delete,
+                color: Colors.grey,
+              ),
               onTap: () {
-                debugPrint('ListTab');
-                navigatorToNoteDetail();
+                debugPrint('Ontab');
               },
             ),
           );
         });
-  }
-
-  void navigatorToNoteDetail() {
-    Navigator.push(context, MaterialPageRoute(builder: (_) => NoteDatail()));
   }
 }
